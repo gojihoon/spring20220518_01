@@ -4,10 +4,13 @@ import com.its.people.DTO.PeopleDTO;
 import com.its.people.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class PeopleController {
@@ -50,5 +53,11 @@ public class PeopleController {
             System.out.println("저장실패");
             return "save-fail";
         }
+    }
+    @GetMapping("/findAll")
+    public String findAll(Model model){
+        List <PeopleDTO> peopleDTOList = peopleService.findAll();
+        model.addAttribute("peopleList",peopleDTOList);
+        return "list";
     }
 }

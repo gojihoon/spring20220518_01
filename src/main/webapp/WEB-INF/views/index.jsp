@@ -12,5 +12,6 @@
 </head>
 <body>
     <a href="/save-form">save</a>
+    <a href="findAll">findall</a>
 </body>
 </html>
